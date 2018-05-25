@@ -1,0 +1,55 @@
+Group A
+
+Egypt 9 7 8 L
+Russia 13 19 9 MH
+Uruguay 36 22 21 H
+Saudi Arabia 26 19 16 L
+
+Group B
+
+Morocco 18 2 9 L
+Spain 55 10 16 MH
+Iran 17 4 14 L
+Portugal 35 9 13 M
+
+Group C
+
+France 25 12 13 H
+Australia 23 18 16 L
+Peru 34 27 22 H
+Denmark 26 9 14 M
+
+Group D
+
+Argentina 22 22 20 H
+Croatia 20 7 14 M
+Nigeria 12 8 8 M
+Iceland 17 13 12 M
+
+Group E
+
+Brazil 44 11 20 H
+Serbia 24 13 13 M
+Costa Rica 15 10 13 M
+Switzerland 31 7 14 M
+
+Group F
+
+Germany 46 8 13 M
+Mexico 20 8 13 M
+Sweden 28 12 14 H
+South Korea 16 18 14 M
+
+Group G
+
+Belgium 47 6 11 M
+England 20 4 13 M
+Tunisia 13 4 8 L
+Panama 10 17 13 M
+
+Group H
+
+Poland 31 17 12 M
+Colombia 24 21 20 H
+Senegal 11 4 8 L
+Japan 19 10 12 L
