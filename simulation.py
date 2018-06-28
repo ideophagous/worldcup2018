@@ -32,7 +32,6 @@ the results of some matches and
 predicting the rest of the WC, so the
 program can remain useful during the
 competition.
-
 """
 
 from random import randint
@@ -102,6 +101,20 @@ class Team:
     def __str__(self):
         return team.name.rjust(15,' ')
 
+    def get_result(self,opponent,filename):
+        """
+        """
+        with open(filename,'r') as res:
+            for i,line in enumerate(res):
+                try:
+                    match = line.strip().split(',')
+                    if self.name==match[0] and opponent.name==match[1]:
+                        return int(match[2]),int(match[3])
+                    elif self.name==match[1] and opponent.name==match[0]:
+                        return int(match[3]),int(match[2])
+                except:
+                    return None
+        return None
 
     def play(self,opponent,knockout):
         """
@@ -125,10 +138,17 @@ class Team:
         the match is decided by pure chance,
         50/50.
         """
-        team_score = int(randint(0,self.attack)/(1+randint(0,opponent.defense)))
-        opponent_score = int(randint(0,opponent.attack)/(1+randint(0,self.defense)))
+        
+        
 
         if not knockout:
+            result = self.get_result(opponent,"group results.txt")
+            if result is not None:
+                team_score = result[0]
+                opponent_score = result[1]
+            else:
+                team_score = int(randint(0,self.attack)/(1+randint(0,opponent.defense)))
+                opponent_score = int(randint(0,opponent.attack)/(1+randint(0,self.defense)))
             self.goals_for += team_score
             self.goals_against += opponent_score
             opponent.goals_for += opponent_score
@@ -141,6 +161,8 @@ class Team:
                 self.points+=1
                 opponent.points+=1
         else:
+            team_score = int(randint(0,self.attack)/(1+randint(0,opponent.defense)))
+            opponent_score = int(randint(0,opponent.attack)/(1+randint(0,self.defense)))
             if team_score>opponent_score:
                 return 1
             elif team_score<opponent_score:
@@ -353,11 +375,15 @@ class Team:
                 new_list.append(x)
         return new_list
 
+    
+                        
+        
+
 if __name__=='__main__':
 
     worldcup = Team.generateTeams("teams.txt")
     groups = []
-    N = 100000
+    N = 10000
     
     for i in range(0,len(worldcup),4):
         groups.append(worldcup[i:i+4])
@@ -373,7 +399,10 @@ if __name__=='__main__':
     for team in groups:
         i+=1
         print(str(i).ljust(2,' ')+" ",end='')
-        print(team)
+        print(team,end='')
+        print(" "+str(team.first*100.0/N)+"  "+
+                  str(team.second*100.0/N)+"  "+str(team.eighth*100.0/N)+" "+str(team.quarter*100.0/N)+" "+str(team.semi*100.0/N)
+                  +" "+str(team.third*100.0/N)+" "+str(team.final*100.0/N)+" "+str(team.winner*100.0/N))
         
     '''+" "+str(team.first/1000.0)+"  "+
                   str(team.second/1000.0)+"  "+str(team.eighth/1000.0)+" "+str(team.quarter/1000)+" "+str(team.semi/1000)
