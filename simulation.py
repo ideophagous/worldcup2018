@@ -1,4 +1,5 @@
 """
+Made by:  Mounir Afifi, Python 3.6
 A simulation program for the World Cup
 2018 in Russia.
 The program is based on a simple model
